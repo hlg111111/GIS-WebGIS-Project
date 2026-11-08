@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>城市公园应急巡查 WebGIS</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">GIS 生命周期课程工程</p>
+        <h1>城市公园应急巡查与服务设施可达性 WebGIS</h1>
+      </div>
+      <div class="status" id="status">正在加载数据…</div>
+    </header>
+    <main class="layout">
+      <section class="map-panel" aria-label="地图区域">
+        <div class="map-toolbar">
+          <label><input type="checkbox" id="toggle-parks" checked /> 公园范围</label>
+          <label><input type="checkbox" id="toggle-hazards" checked /> 风险事件</label>
+          <label><input type="checkbox" id="toggle-services" checked /> 服务点</label>
+          <span class="toolbar-note">坐标系：WGS84 / EPSG:4326</span>
+        </div>
+        <svg id="map" viewBox="0 0 900 600" role="img" aria-label="城市公园空间分布图"></svg>
+        <div class="legend">
+          <span><i class="legend-swatch park"></i>公园</span>
+          <span><i class="legend-swatch hazard"></i>风险事件</span>
+          <span><i class="legend-swatch service"></i>服务点</span>
+          <span class="north">N ↑</span>
+        </div>
+      </section>
+      <aside class="side-panel">
+        <div class="panel-section">
+          <p class="eyebrow">空间分析</p>
+          <h2>选择一个公园</h2>
+          <select id="park-select" disabled></select>
+          <button id="analyze" disabled>运行风险与可达性分析</button>
+        </div>
+        <div class="analysis" id="analysis">
+          <p class="empty">加载完成后选择公园，系统会计算范围内风险事件和最近服务点。</p>
+        </div>
+        <div class="panel-section small-note">
+          <h3>业务规则</h3>
+          <p>风险事件只有在点落入公园面内时才计入该公园。距离采用 Haversine 公式计算，超过 2 km 的最近服务点会增加可达性风险分。</p>
+          <p>页面中的“GeoAI 建议”是可审计的本地规则原型，后续可替换为经审批的模型服务。</p>
+        </div>
+      </aside>
+    </main>
+    <footer>样例数据为脱敏/构造数据，仅用于课程演示。空间分析逻辑见 docs/空间逻辑校验报告.md。</footer>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

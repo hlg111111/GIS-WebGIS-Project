@@ -1,0 +1,16 @@
+{
+  "name": "city-park-emergency-webgis",
+  "version": "1.0.0",
+  "description": "城市公园应急巡查与服务设施可达性 WebGIS 教学实训工程",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/server.mjs",
+    "test": "node --test tests/spatial.test.mjs",
+    "validate": "node scripts/validate-project.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+
