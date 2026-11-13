@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b35">
+  <title>渝北龙溪街道 WebGIS | 公园巡查与设施可达性</title>
+  <link rel="stylesheet" href="./leaflet.css">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./leaflet.min.js"></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="渝北龙溪 WebGIS 首页"><span class="brand-mark">渝</span><span><strong>渝北区 · 龙溪街道</strong><small>公园巡查与应急服务设施可达性</small></span></a>
+    <div class="header-meta"><span class="live-dot"></span><span id="map-status" role="status">正在加载地图与本地数据…</span></div>
+  </header>
+  <main class="workspace">
+    <section class="map-column" aria-label="龙溪街道地图">
+      <div id="map" role="application" aria-label="重庆市渝北区龙溪街道互动地图"></div>
+      <div class="map-tools" aria-label="地图操作">
+        <button id="zoom-in" type="button" aria-label="放大地图">＋</button>
+        <button id="zoom-out" type="button" aria-label="缩小地图">−</button>
+        <button id="reset-view" type="button">回到龙溪</button>
+      </div>
+      <div class="map-note"><span class="scale-mark"></span>重庆市渝北区 · 龙溪街道周边 <span id="coordinate-readout">经纬度 WGS84</span></div>
+    </section>
+    <aside class="sidebar">
+      <section class="intro">
+        <p class="eyebrow">FIELD OPERATIONS / 渝北区</p>
+        <h1>把巡查放回<br><em>真实街道</em>里</h1>
+        <p class="intro-copy">围绕龙溪街道查看演示公园范围、巡查点和应急服务点。</p>
+        <span class="data-badge"><i></i>风险点与设施为教学示意数据</span>
+      </section>
+      <section class="layer-section">
+        <div class="section-heading"><h2>地图图层</h2><span>点击开关即时显示 / 隐藏</span></div>
+        <label class="layer-row"><span class="layer-icon park-icon">▧</span><span class="layer-name"><strong>公园范围</strong><small>示意范围</small></span><span class="layer-count" id="count-parks">0</span><input id="toggle-parks" type="checkbox" checked aria-label="显示公园范围"><span class="switch"></span></label>
+        <label class="layer-row"><span class="layer-icon risk-icon">●</span><span class="layer-name"><strong>巡查 / 风险点</strong><small>教学构造点</small></span><span class="layer-count" id="count-incidents">0</span><input id="toggle-incidents" type="checkbox" checked aria-label="显示巡查和风险演示点"><span class="switch"></span></label>
+        <label class="layer-row"><span class="layer-icon service-icon">✚</span><span class="layer-name"><strong>应急服务点</strong><small>教学构造点</small></span><span class="layer-count" id="count-services">0</span><input id="toggle-services" type="checkbox" checked aria-label="显示应急服务演示点"><span class="switch"></span></label>
+      </section>
+      <section class="analysis-section">
+        <div class="section-heading"><h2>空间分析</h2><span>演示估算</span></div>
+        <label class="select-label" for="feature-select">分析对象</label>
+        <select id="feature-select" class="feature-select"><option value="demo-park-a">龙溪街道演示公园范围 A</option><option value="demo-park-b">龙溪街道演示公园范围 B</option></select>
+        <button id="run-analysis" class="analyze-button" type="button"><span>运行范围分析</span><span aria-hidden="true">↗</span></button>
+        <div id="analysis-result" class="result" aria-live="polite"><span class="result-kicker">ANALYSIS RESULT</span><p>选择公园并运行分析，查看范围内演示点和最近应急服务点。</p></div>
+      </section>
+      <section id="feature-detail" class="detail-section" aria-live="polite">
+        <span class="detail-kicker">地图要素</span><p>点击地图上的点或公园范围查看属性。</p>
+      </section>
+      <footer class="sidebar-footer"><span>底图 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap 贡献者</a></span><span>要素：课程演示数据</span></footer>
+    </aside>
+  </main>
+</body>
+</html>
