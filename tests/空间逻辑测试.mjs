@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {pointInPolygon,haversineKm,nearestFeature} from '../src/spatial.js';
+const polygon={type:'Feature',geometry:{type:'Polygon',coordinates:[[[0,0],[1,0],[1,1],[0,1],[0,0]]]}};
+const point=(x,y)=>({type:'Feature',properties:{id:`${x},${y}`},geometry:{type:'Point',coordinates:[x,y]}});
+test('识别面内、面外和边界点',()=>{assert.equal(pointInPolygon([.5,.5],polygon),true);assert.equal(pointInPolygon([2,.5],polygon),false);assert.equal(pointInPolygon([0,.5],polygon),true);});
+test('排除多边形孔洞内部，并识别多部件面',()=>{const withHole={type:'Feature',geometry:{type:'Polygon',coordinates:[[[0,0],[4,0],[4,4],[0,4],[0,0]],[[1,1],[3,1],[3,3],[1,3],[1,1]]]}};assert.equal(pointInPolygon([.5,.5],withHole),true);assert.equal(pointInPolygon([2,2],withHole),false);const multi={type:'Feature',geometry:{type:'MultiPolygon',coordinates:[[[[10,10],[11,10],[11,11],[10,11],[10,10]]],[[[20,20],[21,20],[21,21],[20,21],[20,20]]]]}};assert.equal(pointInPolygon([20.5,20.5],multi),true);assert.equal(pointInPolygon([15,15],multi),false);});
+test('经纬度输入按[经度,纬度]，距离单位为公里',()=>{assert.ok(Math.abs(haversineKm([0,0],[1,0])-111.195)<.2);});
+test('最近点排序返回正确要素',()=>{assert.equal(nearestFeature([0,0],[point(2,0),point(.1,0)]).feature.properties.id,'0.1,0');});
+test('空设施集合返回空值',()=>{assert.equal(nearestFeature([0,0],[]),null);});
