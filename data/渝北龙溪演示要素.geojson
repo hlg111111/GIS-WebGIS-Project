@@ -1,0 +1,36 @@
+{
+  "type": "FeatureCollection",
+  "name": "渝北区龙溪街道课程演示要素",
+  "metadata": {
+    "mapCenter": [106.523, 29.592],
+    "bbox": [106.485, 29.565, 106.56, 29.62],
+    "coordinateReferenceSystem": "WGS84 / EPSG:4326",
+    "source": "演示设施为项目内构造的示意要素；在线街道底图由 OpenStreetMap 提供",
+    "asOf": "2026-11-13"
+  },
+  "layers": {
+    "parks": {
+      "type": "FeatureCollection",
+      "features": [
+        {"type":"Feature","properties":{"id":"demo-park-a","name":"龙溪街道演示公园范围 A","kind":"公园","dataStatus":"示意范围，非测绘边界"},"geometry":{"type":"Polygon","coordinates":[[[106.5170,29.5910],[106.5200,29.5910],[106.5200,29.5932],[106.5170,29.5932],[106.5170,29.5910]]]}},
+        {"type":"Feature","properties":{"id":"demo-park-b","name":"龙溪街道演示公园范围 B","kind":"公园绿地","dataStatus":"构造演示范围"},"geometry":{"type":"Polygon","coordinates":[[[106.5300,29.5870],[106.5330,29.5870],[106.5330,29.5890],[106.5300,29.5890],[106.5300,29.5870]]]}}
+      ]
+    },
+    "incidents": {
+      "type": "FeatureCollection",
+      "features": [
+        {"type":"Feature","properties":{"id":"demo-risk-01","name":"演示积水点 A","kind":"模拟风险点","severity":"高","dataStatus":"教学构造，非真实事故"},"geometry":{"type":"Point","coordinates":[106.5182,29.5920]}},
+        {"type":"Feature","properties":{"id":"demo-risk-02","name":"演示照明巡查点 B","kind":"模拟巡查点","severity":"中","dataStatus":"教学构造，非真实事件"},"geometry":{"type":"Point","coordinates":[106.5312,29.5882]}},
+        {"type":"Feature","properties":{"id":"demo-risk-03","name":"演示道路巡查点 C","kind":"模拟巡查点","severity":"低","dataStatus":"教学构造，非真实事件"},"geometry":{"type":"Point","coordinates":[106.5460,29.6030]}}
+      ]
+    },
+    "services": {
+      "type": "FeatureCollection",
+      "features": [
+        {"type":"Feature","properties":{"id":"demo-service-01","name":"龙溪应急服务点 1","kind":"应急服务点","dataStatus":"构造演示点，非官方设施坐标"},"geometry":{"type":"Point","coordinates":[106.5145,29.5960]}},
+        {"type":"Feature","properties":{"id":"demo-service-02","name":"龙溪应急服务点 2","kind":"应急服务点","dataStatus":"构造演示点，非官方设施坐标"},"geometry":{"type":"Point","coordinates":[106.5360,29.5940]}},
+        {"type":"Feature","properties":{"id":"demo-service-03","name":"龙溪应急服务点 3","kind":"应急服务点","dataStatus":"构造演示点，非官方设施坐标"},"geometry":{"type":"Point","coordinates":[106.5480,29.5820]}}
+      ]
+    }
+  }
+}
